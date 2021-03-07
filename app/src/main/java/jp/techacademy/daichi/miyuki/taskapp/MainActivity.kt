@@ -38,12 +38,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, InputActivity::class.java)
             startActivity(intent)
         }
+        var count:Int=0
 
         button.setOnClickListener {
-
+            if(count==0) {
                 search()
-
+                button.text="一覧"
+                count=1
+            }else{
+                reloadListView()
+                button.text="絞り込み"
+                count=0
+            }
         }
+
 
         // Realmの設定
         mRealm = Realm.getDefaultInstance()
